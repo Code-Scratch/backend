@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, setDoc } from "firebase/firestore"
+import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { db } from "../fireBaseConfig/Config"
 import { User } from "../model/User";
 import AppError from "../middlewares/AppError";
@@ -22,6 +22,14 @@ export class fireBaseRespository {
         await setDoc(ref, usuario);
         return usuario;
     };
+
+    async update(user: User) {
+        console.log(user + "desde el repo");
+        
+        const ref = doc(this.userCollection, user.id);
+        await updateDoc(ref, {score: user.score});
+        return user;
+    }
  
      
 };

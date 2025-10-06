@@ -37,6 +37,14 @@ class fireBaseRespository {
         });
     }
     ;
+    update(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(user + "desde el repo");
+            const ref = (0, firestore_1.doc)(this.userCollection, user.id);
+            yield (0, firestore_1.updateDoc)(ref, { score: user.score });
+            return user;
+        });
+    }
 }
 exports.fireBaseRespository = fireBaseRespository;
 ;

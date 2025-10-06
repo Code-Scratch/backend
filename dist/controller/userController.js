@@ -20,6 +20,7 @@ const UserController = (router) => {
     }));
     router.post('/', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         const { id, email, username, score } = req.body;
+        console.log(id + "" + "id desde el controller ");
         const user = {
             id: id,
             email: email,
@@ -28,11 +29,24 @@ const UserController = (router) => {
         };
         try {
             const log = yield service.logUser(user);
+            console.log(user.id + "" + "id despues de llamar al service y al repo");
             res.status(200).json({ user: log });
         }
         catch (err) {
             next(err);
         }
+    }));
+    router.put('/update', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log("llego al controller");
+        const { id, pb } = req.body;
+        try {
+            const response = yield service.uptdatePb(id, pb);
+            res.status(200).json({ user: response });
+        }
+        catch (error) {
+            next(error);
+        }
+        ;
     }));
 };
 exports.default = UserController;
