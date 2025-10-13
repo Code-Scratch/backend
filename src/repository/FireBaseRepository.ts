@@ -23,7 +23,7 @@ export class fireBaseRespository {
         return usuario;
     };
 
-    async update(user: User) {
+    async update(user: User) : Promise<User> {
         console.log(user + "desde el repo");
         
         const ref = doc(this.userCollection, user.id);
