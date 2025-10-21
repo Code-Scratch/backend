@@ -11,7 +11,7 @@ Sigue estos pasos para clonar e iniciar el proyecto:
 Copia el siguiente comando y ejecútalo en tu consola **Bash**:
 
 ```bash
-https://github.com/Code-Scratch/backend.git```
+https://github.com/Code-Scratch/backend.git
 ```
 
 2️⃣ Ingresar a la carpeta del proyecto
