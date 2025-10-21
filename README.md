@@ -16,7 +16,7 @@ https://github.com/Code-Scratch/backend.git
 
 2️⃣ Ingresar a la carpeta del proyecto
 ```bash
-cd frontend
+cd backend
 ```
 
 3️⃣ (Opcional) Actualizar ramas del proyecto
