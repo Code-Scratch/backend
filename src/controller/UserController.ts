@@ -11,7 +11,7 @@ const UserController = (router: Router) => {
 
     router.post('/', async(req, res, next) => {
         const {id, email, username, score} = req.body
-
+        
         const user: User = {
             id: id,
             email: email,
@@ -20,6 +20,7 @@ const UserController = (router: Router) => {
         };
         try {
             const log = await service.logUser(user);
+            
             res.status(200).json({user: log})
         }
         catch(err){
@@ -28,6 +29,19 @@ const UserController = (router: Router) => {
         
 
     })
+
+    router.put('/update', async(req, res, next) => {
+        
+        const {id, pb} = req.body
+        try{
+            const response = await service.uptdatePb(id,pb);
+            res.status(200).json({user : response});
+        }
+        catch (error){
+            next(error);
+        };
+
+    });
 };
 
 export default UserController;

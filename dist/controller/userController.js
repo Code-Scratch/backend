@@ -34,5 +34,16 @@ const UserController = (router) => {
             next(err);
         }
     }));
+    router.put('/update', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+        const { id, pb } = req.body;
+        try {
+            const response = yield service.uptdatePb(id, pb);
+            res.status(200).json({ user: response });
+        }
+        catch (error) {
+            next(error);
+        }
+        ;
+    }));
 };
 exports.default = UserController;

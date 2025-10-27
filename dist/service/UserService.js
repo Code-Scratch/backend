@@ -25,16 +25,29 @@ const UserService = () => {
                 return registUser;
             }
             ;
-            console.log("esto tiene el existUser del UserService" + "" + existUser);
             return existUser.data();
         }
         catch (error) {
-            console.log(error);
             throw new AppError_1.default('No se pudo entrar a la base', 500);
         }
     });
+    const uptdatePb = (id, pb) => __awaiter(void 0, void 0, void 0, function* () {
+        const user = yield repository.findById(id);
+        if (!user) {
+            throw new AppError_1.default('El usuario no existe', 404);
+        }
+        try {
+            const userData = user.data();
+            const userUpdated = Object.assign(Object.assign({}, userData), { id, score: pb });
+            return yield repository.update(userUpdated);
+        }
+        catch (error) {
+            throw new AppError_1.default('No se pudo actualizar el PB', 500);
+        }
+    });
     return {
-        logUser
+        logUser,
+        uptdatePb
     };
 };
 exports.default = UserService;
