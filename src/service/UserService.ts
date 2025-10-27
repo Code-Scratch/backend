@@ -12,15 +12,11 @@ const UserService = () => {
                     usuario.score = 0;
                     const registUser = await repository.save(usuario);
                 return registUser;
-        };
-
-            console.log("esto tiene el existUser del UserService" + "" + existUser);
-            
+        };            
             return existUser.data();
 
         }
         catch (error){
-            console.log(error);
             throw new AppError('No se pudo entrar a la base', 500);
             
         }
@@ -29,11 +25,7 @@ const UserService = () => {
     };
 
     const uptdatePb = async(id: string, pb: number) => {
-        console.log(id + "id del usuario" + "" + "y pb del usuario es:" + pb );
-        
         const user = await repository.findById(id);
-        console.log(user?.data + "desde el service");
-        
 
         if(!user){
             throw new AppError('El usuario no existe', 404);
@@ -52,9 +44,7 @@ const UserService = () => {
 
         }
         catch (error){
-            console.log(error);
             throw new AppError('No se pudo actualizar el PB', 500)
-            
         }
     }
     

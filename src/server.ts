@@ -19,8 +19,6 @@ app.use(helmet());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    console.log(req.body);
-
     res.json('Hello world');
 });
 

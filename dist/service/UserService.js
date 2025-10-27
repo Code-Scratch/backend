@@ -25,18 +25,14 @@ const UserService = () => {
                 return registUser;
             }
             ;
-            console.log("esto tiene el existUser del UserService" + "" + existUser);
             return existUser.data();
         }
         catch (error) {
-            console.log(error);
             throw new AppError_1.default('No se pudo entrar a la base', 500);
         }
     });
     const uptdatePb = (id, pb) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log(id + "id del usuario" + "" + "y pb del usuario es:" + pb);
         const user = yield repository.findById(id);
-        console.log((user === null || user === void 0 ? void 0 : user.data) + "desde el service");
         if (!user) {
             throw new AppError_1.default('El usuario no existe', 404);
         }
@@ -46,7 +42,6 @@ const UserService = () => {
             return yield repository.update(userUpdated);
         }
         catch (error) {
-            console.log(error);
             throw new AppError_1.default('No se pudo actualizar el PB', 500);
         }
     });
